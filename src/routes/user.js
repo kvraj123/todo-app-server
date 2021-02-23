@@ -56,11 +56,11 @@ router.post('/createUser', async (req, res) => {
    
     try {
 
-        const response = await create.save();
+        const user = await create.save();
         sendWelcomeEmail(create.email, create.name)
         const token = await create.generateToken();
         res.send({
-            response,
+            user,
             token
         })
     } catch (e) {
